@@ -26,10 +26,10 @@ Task Manager to narzędzie do efektywnego planowania i śledzenia postępów w r
 **Instalacja i uruchomienie**  
 Aby uruchomić aplikację lokalnie, wykonaj następujące kroki:  
 ---
-git clone https://github.com/adosmino/task-manager.git
-cd task-manager
-npm install
-ng serve
+- git clone https://github.com/adosmino/task-manager.git
+- cd task-manager
+- npm install
+- ng serve
 ---
 Aplikacja będzie dostępna pod adresem `http://localhost:4200/`.  
 
@@ -41,7 +41,7 @@ Nie wymaga specjalnej konfiguracji – wszystkie dane są przechowywane lokalnie
 **Deployment**  
 Aplikację można wdrożyć:
 ---
-ng build --prod
+- ng build --prod
 ---
 
 
