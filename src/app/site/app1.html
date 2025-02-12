@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task-manager</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="Kontener">
+      <nav>
+        <button type="button" class="menu_button" [disabled]="disable1" (click)="toggleHide1()"><svg
+          class="symbol"
+          [ngClass]="{'yellow-icon': hasTodaysTasks()}"
+          xmlns="httphide;w.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path
+            d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h168q13-36 43.5-58t68.5-22q38 0 68.5 22t43.5 58h168q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm80-80h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm200-190q13 0 21.5-8.5T510-820q0-13-8.5-21.5T480-850q-13 0-21.5 8.5T450-820q0 13 8.5 21.5T480-790ZM200-200v-560 560Z"
+          />
+        </svg></button>
+        <button type="button" class="menu_button" [disabled]="disable2" (click)="toggleHide2()"><svg
+          class="symbol"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path
+            d="M280-280h84l240-238-86-86-238 238v86Zm352-266 42-44q6-6 6-14t-6-14l-56-56q-6-6-14-6t-14 6l-44 42 86 86ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h168q13-36 43.5-58t68.5-22q38 0 68.5 22t43.5 58h168q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm280-590q13 0 21.5-8.5T510-820q0-13-8.5-21.5T480-850q-13 0-21.5 8.5T450-820q0 13 8.5 21.5T480-790ZM200-200v-560 560Z"
+          />
+        </svg></button>
+        <button type="button" class="menu_button" [disabled]="disable3" (click)="toggleHide3()"><svg
+          class="symbol"
+          [ngClass]="{'overdue-icon': hasOverdueTasks()}"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path
+            d="M680-80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80Zm67-105 28-28-75-75v-112h-40v128l87 87Zm-547 65q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h167q11-35 43-57.5t70-22.5q40 0 71.5 22.5T594-840h166q33 0 56.5 23.5T840-760v250q-18-13-38-22t-42-16v-212h-80v120H280v-120h-80v560h212q7 22 16 42t22 38H200Zm280-640q17 0 28.5-11.5T520-800q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800q0 17 11.5 28.5T480-760Z"
+          />
+        </svg></button>
+        <!-- <button type="button" class="menu_button" [disabled]="disable4" (click)="toggleHide4()"><svg
+          class="symbol"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path
+            d="M620-163 450-333l56-56 114 114 226-226 56 56-282 282Zm220-397h-80v-200h-80v120H280v-120h-80v560h240v80H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h167q11-35 43-57.5t70-22.5q40 0 71.5 22.5T594-840h166q33 0 56.5 23.5T840-760v200ZM480-760q17 0 28.5-11.5T520-800q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800q0 17 11.5 28.5T480-760Z"
+          />
+        </svg></button> -->
+      </nav>
+      <div id="Rcon">
+        <main>
+          <section class="line_sec"><div class="line"></div></section>
+          <section class="tasks" id="t1" [class.hide1]="hide1">
+            <div class="tasks_head" id="th1">
+                <h1>Zadania do wykonania</h1>
+                <p *ngIf="hasTodayTasks()" id="warning">Masz zadania do wykonania na dziś!</p>
+                <p *ngIf="hasTodayTasks()" id="warning_ex">!</p>
+                <h1 class="date">{{ date | date:'dd/MM/yyyy'}}</h1>
+            </div>
+            <div class="tasks_split">
+              <div class="line_h"></div>
+            </div>
+            <div class="tasks_body" id="tb1">
+              <ul>
+                <li *ngFor="let task of sortedTasks(); let i = index">
+                  <div class="taskbox">
+                    <div class="taskbox_text">
+                      <strong [ngClass]="{'completed-task': task.completed}">{{ task.title }}</strong>
+                      <p class="tsk_txt_des" [ngClass]="{'completed-task': task.completed}">{{ task.description }}</p>
+                      <div>
+                        <p [ngClass]="{'completed-task': task.completed}">termin: {{ task.dueDate | date: 'mediumDate' }}</p>
+                        <p [ngClass]="{'yellow-status': isTaskDueToday(task)}">status: {{ task.completed ? 'zrobione' : 'do zrobienia' }}</p>
+                      </div>
+                    </div>
+                    <div class="taskbox_buttons">
+                      <button class="tsk_btn" (click)="markTaskCompleted(i)">
+                        <!-- <p>{{ task.completed ? 'cofnij' : 'zrobione' }}</p> -->
+                        <p>
+                          <ng-container *ngIf="!task.completed; else taskCompleted">
+                            <!-- This is for when the task is NOT completed -->
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                              <path d="M268-240 42-466l57-56 170 170 56 56-57 56Zm226 0L268-466l56-57 170 170 368-368 56 57-424 424Zm0-226-57-56 198-198 57 56-198 198Z"/>
+                            </svg>
+                          </ng-container>
+                          <ng-template #taskCompleted>
+                            <!-- This is for when the task is COMPLETED -->
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                              <path d="M873-88 609-352 495-238 269-464l56-58 170 170 56-56-414-414 56-58 736 736-56 56ZM269-238 43-464l56-56 170 170 56 56-56 56Zm452-226-56-56 196-196 58 54-198 198ZM607-578l-56-56 86-86 56 56-86 86Z"/>
+                            </svg>
+                          </ng-template>
+                        </p>                                                                        
+                      </button>
+                      <button class="tsk_btn" (click)="deleteTask(i)">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section class="tasks" id="t2" [class.hide2]="hide2">
+            <div class="tasks_head" id="th2">
+                <h1>Dodaj zadanie</h1>
+                <h1 class="date">{{ date | date:'dd/MM/yyyy'}}</h1>
+            </div>
+            <div class="tasks_split">
+              <div class="line_h"></div>
+            </div>
+            <div class="tasks_body" id="tb2">
+              <form (ngSubmit)="addTask()">
+                <div class="taskform_part">
+                  <label for="title">Tytuł zadania</label>
+                  <input id="title" [(ngModel)]="newTaskTitle" name="title" type="text" required />
+                </div>
+                <div class="taskform_part">
+                  <label for="description">Opis</label>
+                  <textarea rows="1" id="description" [(ngModel)]="newTaskDescription" name="description" required></textarea>
+                </div>
+                <div class="taskform_part">
+                  <label for="dueDate">Termin wykonania</label>
+                  <input id="dueDate" [(ngModel)]="newTaskDueDate" name="dueDate" type="date" required />
+                </div>
+                <button class="tsk_btn" id="tsk_btn_add" type="submit">Dodaj zadanie</button>
+              </form>
+            </div>
+          </section>
+          <section class="tasks" id="t3" [class.hide3]="hide3">
+            <div class="tasks_head" id="th3">
+                <h1>Zaległe zadania</h1>
+                <h1 class="date">{{ date | date:'dd/MM/yyyy'}}</h1>
+            </div>
+            <div class="tasks_split">
+              <div class="line_h"></div>
+            </div>
+            <div class="tasks_body" id="tb3">
+              <ul>
+                <li *ngFor="let task of overdueTasks(); let i = index">
+                  <div class="taskbox">
+                    <div class="taskbox_text">
+                      <strong [ngClass]="{'completed-task': task.completed}">{{ task.title }}</strong>
+                      <p [ngClass]="{'completed-task': task.completed}" class="tsk_txt_des">{{ task.description }}</p>
+                      <p [ngClass]="{'completed-task': task.completed}">termin: {{ task.dueDate | date: 'mediumDate' }}</p>
+                      <p>status: {{ task.completed ? 'zrobione' : 'zaległe' }}</p>
+                    </div>
+                    <div class="taskbox_buttons">
+                      <button class="tsk_btn" (click)="markTaskCompleted(i)">
+                        <!-- {{ task.completed ? 'cofnij' : 'zrobione' }} -->
+                        <p>
+                          <ng-container *ngIf="!task.completed; else taskCompleted">
+                            <!-- This is for when the task is NOT completed -->
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                              <path d="M268-240 42-466l57-56 170 170 56 56-57 56Zm226 0L268-466l56-57 170 170 368-368 56 57-424 424Zm0-226-57-56 198-198 57 56-198 198Z"/>
+                            </svg>
+                          </ng-container>
+                          <ng-template #taskCompleted>
+                            <!-- This is for when the task is COMPLETED -->
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                              <path d="M873-88 609-352 495-238 269-464l56-58 170 170 56-56-414-414 56-58 736 736-56 56ZM269-238 43-464l56-56 170 170 56 56-56 56Zm452-226-56-56 196-196 58 54-198 198ZM607-578l-56-56 86-86 56 56-86 86Z"/>
+                            </svg>
+                          </ng-template>
+                        </p>
+                      </button>
+                      <button class="tsk_btn" (click)="deleteTask(i)">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <!-- <section class="tasks" id="t4" [class.hide4]="hide4">
+            <div class="tasks_head" id="th4">
+                <h1>Wykonane</h1>
+                <h1 class="date">{{ date | date:'dd/MM/yyyy'}}</h1>
+            </div>
+            <div class="tasks_split">
+              <div class="line_h"></div>
+            </div>
+            <div class="tasks_body" id="tb4">
+              <ul>
+                <li *ngFor="let task of completedTasks(); let i = index">
+                  <div class="taskbox">
+                    <div class="taskbox_text" id="taskbox_text_done">
+                      <strong>{{ task.title }}</strong>
+                      <p class="tsk_txt_des">{{ task.description }}</p>
+                      <p>termin: {{ task.dueDate | date: 'mediumDate' }}</p>
+                      <p>status: wykonane</p>
+                    </div>
+                    <div class="taskbox_buttons">
+                      <button class="tsk_btn" id="tsk_btn_del" (click)="deleteTask(i)">usuń</button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section> -->
+          <section class="line_sec"><div class="line"></div></section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, excepturi quam eos dolores, itaque cum nisi repudiandae saepe facere temporibus dolorum, quia nobis molestiae dolorem quibusdam expedita? Magni, expedita totam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rem accusantium ipsum quas accusamus ab itaque quod amet nisi at dicta, assumenda et dolorem ratione cum nulla quos? Minima, nobis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia placeat, consequatur ea cumque impedit obcaecati reprehenderit soluta minima minus eum atque unde saepe! Nam perspiciatis aliquam necessitatibus eveniet sapiente cumque. -->

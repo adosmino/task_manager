@@ -1,1 +1,292 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --bg: #ffffff;
+    --main: #333333;
+    --accents: #34C759;
+    --light: #666666;
+    --prio: #FF3B30;
+    --mid: #FF9500;
+}
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-family: "Nunito", sans-serif;
+}
+body {
+    font-family: "Nunito", sans-serif;
+    margin: 0%;
+    margin-top: 0px;
+    padding: 0%;
+}
+#Kontener{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+}
+nav {
+    background-color: var(--bg);
+    width: 10%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.symbol {
+    height: auto;
+    width: 100%;
+    fill: var(--main);
+}
+#Rcon{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main);
+}
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.line_sec {
+    height: 100%;
+    width: 2.2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.line {
+    height: 90%;
+    background-color: var(--bg);
+    width: 15%;
+}
+.tasks {
+    background-color: var(--bg);
+    width: 100%;
+    height: 90%;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    color: var(--main);
+}
+.tasks_head {
+    width: 95%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 5.5vh;
+    color: var(--accents);
+}
+#warning {
+    color: var(--mid);
+    font-size: 2.5vh;
+}
+#warning_ex {
+    color: var(--mid);
+    display: none;
+}
+.tasks {
+    display: flex;
+    flex-direction: column;
+}
+.tasks_split {
+    height: 1.1vw;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.line_h {
+    height: 30%;
+    background-color: var(--accents);
+    width: 95%;
+}
+.tasks_body {
+    display: flex;
+    width: 100%;
+    height: 82.2%;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 95%;
+    justify-content: space-between;
+}
+
+ul {
+    width: 95%;
+    height: 90%;
+    list-style: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+strong {
+    font-weight: bold;
+    font-size: 2.7vh;
+    color: var(--accents);
+    width: 50vw;
+    height: 25%;
+    overflow-y: auto;
+}
+.taskbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 125px;
+    border-bottom: solid 1px var(--main);
+}
+.taskbox_text {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+.tsk_txt_des {
+    height: 35%;
+    overflow-y: auto;
+}
+.taskbox_buttons {
+    display: flex;
+    flex-direction: column;
+    width: 5%;
+    justify-content: space-evenly;
+}
+.tsk_btn {
+    height: 45%;
+    width: 100%;
+    background-color: var(--main);
+    color: var(--bg);
+    line-height: 90%;
+    font-weight: bold;
+}
+.tsk_btn:hover {
+    cursor: pointer;
+    background-color: var(--accents);
+    color: var(--bg);
+    box-shadow: none;
+}
+#tsk_btn_del {
+    height: 90%;
+}
+.completed-task {
+    text-decoration: line-through;
+    color: var(--light);
+    opacity: 0.6;
+}  
+#taskbox_text_done strong {
+    text-decoration: line-through var(--main);
+}
+form input, form textarea {
+    border-bottom: solid 1px var(--main);
+    border-left: solid 1px var(--main);
+}
+.taskform_part {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 25%;
+}
+#tsk_btn_add {
+    height: 15%;
+}
+textarea {
+    width: 100%;
+}
+label {
+    font-weight: bold;
+    font-size: 2.7vh;
+    color: var(--accents);
+}
+.menu_button {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu_button:hover{
+    cursor: pointer;
+    .symbol {
+        fill: var(--accents);
+    }
+}
+.menu_button:disabled{
+    background-color: var(--main);
+    .symbol {
+        fill: var(--bg);
+    }
+    .overdue-icon {
+        fill: var(--prio);
+      }
+      .yellow-icon {
+        fill: var(--mid);
+    }
+}
+.overdue-icon {
+    fill: var(--prio);
+  }
+.yellow-icon {
+    fill: var(--mid);
+}
+.yellow-status {
+    color: var(--mid);
+    font-weight: bold;
+  }
+  
+.hide1, .hide2, .hide3, .hide4{
+    display: none;
+}
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 3.5vh;
+    }
+    .tasks_head {
+        height: 10%;
+    }
+    .tasks_body {
+        height: 88.8%;
+    }
+    ul {
+        width: 92%;
+    }
+    .taskbox {
+        height: 220px;
+        width: 98%;
+    }
+    .taskbox_text {
+        width: 70%;
+    }
+    .tsk_txt_des {
+        height: 50%;
+    }
+    .taskbox_buttons {
+        width: 22%;
+    }
+    .date {
+        display: none;
+    }
+    #warning {
+        display: none;
+    }
+    #warning_ex {
+        display: block;
+    }
+}
